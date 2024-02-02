@@ -6,3 +6,4 @@ python==3.11.7
 missingno==0.4.2
 plotly==5.9.0
 r-base64==2.0
+ipykernel==6.28.0
