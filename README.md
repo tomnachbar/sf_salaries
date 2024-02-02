@@ -12,25 +12,24 @@ One way to understand how a city government works is by looking at who it employ
 
 ## 3. The main analyzes suggested for investigating the data were:
 
-# What the average of total pay, overtime pay and benefits by year?
+ What the average of total pay, overtime pay and benefits by year?
 
-# How is the total of overtime pay by year?
+ How is the total of overtime pay by year?
 
-# How much is the total of benefits by year?
+ How much is the total of benefits by year?
 
-# Which job that have gained most overtime pay by year?
+ Which job that have gained most overtime pay by year?
 
-# What jobs that have gained more benefits by year?
+ What jobs that have gained more benefits by year?
 
-# What relative and accumulated percentage of the 20 biggest jobs represent of the total value?
+ What relative and accumulated percentage of the 20 biggest jobs represent of the total value?
+ What the most frequent of range pay by year?
 
-# What the most frequent of range pay by year?
+ What the count of each job?
 
-# What the count of each job?
+ What the average of payment by job and year?
 
-# What the average of payment by job and year?
-
-# Which jobs have debts with the government?
+ Which jobs have debts with the government?
 
 ## 4. Strategies adopted
 
