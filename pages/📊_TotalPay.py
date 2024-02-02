@@ -7,7 +7,6 @@ import plotly.express as px
 import seaborn as sns
 import streamlit as st
 import locale
-import numpy as np
 
 
 # Read CSV
