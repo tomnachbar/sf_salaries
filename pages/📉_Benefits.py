@@ -118,29 +118,29 @@ col1, col2 = st.columns(2)
 ### How much is the total of benefits by year?
 
 with col1:
-      def graph_sum(df1, group_col='Year', value_col='OvertimePay', palette='mako', figsize=(10,6), width=0.4, title='OvertimePay By Year', orient='v'):
+    def graph_sum(df1, group_col='Year', value_col='OvertimePay', palette='mako', figsize=(10,6), width=0.4, title='OvertimePay By Year', orient='v'):
         sum_overtime = df1[[group_col, value_col]].groupby(group_col).sum().reset_index()
         plt.figure(figsize=figsize)
         ax = sns.barplot(x=group_col, y=value_col, data=sum_overtime, palette=palette, orient=orient, width=width)
-    
+
         for p in ax.patches:
             height = p.get_height()
             ax.annotate("{:.2f}".format(height),
                         (p.get_x() + p.get_width() / 2., height),
                         ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
                         textcoords='offset points')
-    
+
         plt.title(title)
         plt.tight_layout()
         plt.show()
-    
+
         st.pyplot(plt, use_container_width=True)
+    
     graph_sum(df1, group_col='Year', value_col='Benefits', palette='viridis', figsize=(10,6), title='Benefits by Year', orient='v', width=0.6)
 
 ###. What jobs that have gained more benefits by year?
 
 with col2:
-    
     benefit_year = df1.loc[df1.groupby(['Year'])['Benefits'].idxmax()][['Year', 'JobTitle', 'Benefits']]
     plt.figure(figsize=(10, 6))
     ax = sns.barplot(x='Year', y='Benefits', hue='JobTitle', data=benefit_year, palette='viridis', width=0.6, dodge=False)
@@ -155,5 +155,5 @@ with col2:
                     ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
                     textcoords='offset points')
     
-   st.pyplot(plt, use_container_width=True)
+    st.pyplot(plt, use_container_width=True)
     
