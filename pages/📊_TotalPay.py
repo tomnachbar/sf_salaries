@@ -117,8 +117,7 @@ col1, col2 = st.columns(2)
 ### What the average of total pay, overtime pay and benefits by year?
 
 with col1:
-  def avg_totalpay (df1):
-
+  def avg_totalpay(df1):
     avg_totalpay = df1[['TotalPay', 'Year', 'OvertimePay', 'Benefits']].groupby('Year').mean().reset_index()
     avg_totalpay_long = avg_totalpay.melt(id_vars='Year', var_name='Category', value_name='Average')
 
@@ -136,17 +135,14 @@ with col1:
                         xytext=(0,12), 
                         ha='center')
 
-
     plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), shadow=True, ncol=1, fontsize='medium')
-
 
     plt.title('Average of TotalPay, OvertimePay and Benefits by Year')
     plt.xlabel('Year')
     plt.ylabel('Average')
-        
-    st.pyplot(plt,use_container_width=True)
 
-  avg_totalpay(df1)
+    st.pyplot(plt, use_container_width=True)
+avg_totalpay(df1)
   
 ### What relative and accumulated percentage of the 20 biggest jobs represent of the total value?
 
