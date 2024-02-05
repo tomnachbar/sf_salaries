@@ -119,7 +119,8 @@ with col1:
     df1['Range Payment'] = pd.cut(df1['BasePay'], bins=ranges, labels=labels, right=False)
 
     count_ranges = df1.groupby(['Year', 'Range Payment']).size().reset_index(name='Count')
-
+    count_ranges['Year'] = count_ranges['Year'].astype(str)
+   
     plt.figure(figsize=(10, 6))
     barplot = sns.barplot(x='Range Payment', y='Count', hue='Year', data=count_ranges, palette='viridis')
 
