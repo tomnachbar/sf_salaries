@@ -81,7 +81,6 @@ with st.sidebar:
 
 # ==================================================================== #
 st.sidebar.markdown('**YEAR FILTER:**')   
-#year = st.sidebar.slider('Choose the Year:', df1['Year'].min(), df1['Year'].max(), (df1['Year'].min(), df1['Year'].max()))
 year = st.sidebar.slider('Choose the year:', min_value=2011,
                          max_value=2014,
                          value=int(df1['Year'].min()),  # Define o valor inicial como o ano mínimo do DataFrame
