@@ -10,7 +10,7 @@ import streamlit as st
 st.set_page_config(page_title='San Francisco Salaries', page_icon='🌉', layout='wide')
 
 # Read CSV
-df = pd.read_csv('Salaries.csv')
+df = pd.read_csv('Salaries.csv',low_memory=False)
 
 df1 = df.copy()
 
