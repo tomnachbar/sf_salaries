@@ -100,7 +100,7 @@ job = st.sidebar.multiselect(label='Choose the Job Title:',
 
 # DATAFRAME FILTERED
 # ==================================================================== #
-df1_filtered = df1[(df1['Year'] >= year[0]) & (df1['Year'] <= year[1])]
+df1_filtered = df1[(df1['Year'] >= year) & (df1['Year'] <= year)]
 
 df1 = df1_filtered[df1_filtered['JobTitle'].isin(job)]
 
