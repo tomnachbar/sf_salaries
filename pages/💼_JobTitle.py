@@ -8,7 +8,7 @@ import streamlit as st
 
 
 # Read CSV
-df = pd.read_csv('Salaries.csv')
+df = pd.read_csv('Salaries.csv',low_memory=False)
 
 df1 = df.copy()
 
