@@ -7,8 +7,8 @@ import seaborn as sns
 import streamlit as st
 import locale
 
-#Read CSV
-df = pd.read_csv('Salaries.csv')
+# Read CSV
+df = pd.read_csv('Salaries.csv',low_memory=False)
 
 df1 = df.copy()
 
