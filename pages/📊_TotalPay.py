@@ -146,18 +146,18 @@ avg_totalpay(df1)
   
 ### What relative and accumulated percentage of the 20 biggest jobs represent of the total value?
 
- with col2:
+     with col2:
 
-    st.markdown('**Top 20 Percentage Relative and Accumulated of Total Value**')
-
-    percent = df1[['JobTitle', 'TotalPay', 'Year']].groupby('JobTitle')['TotalPay'].sum().reset_index()
-    percent['Percentage'] = percent['TotalPay'] / percent['TotalPay'].sum() * 100
-
-    top_20_percent = percent.nlargest(20, 'Percentage').reset_index()
-
-    top_20_percent['Percentage Accumulated'] = top_20_percent['Percentage'].cumsum()
-
-    st.dataframe(top_20_percent, use_container_width=True)
+        st.markdown('**Top 20 Percentage Relative and Accumulated of Total Value**')
+    
+        percent = df1[['JobTitle', 'TotalPay', 'Year']].groupby('JobTitle')['TotalPay'].sum().reset_index()
+        percent['Percentage'] = percent['TotalPay'] / percent['TotalPay'].sum() * 100
+    
+        top_20_percent = percent.nlargest(20, 'Percentage').reset_index()
+    
+        top_20_percent['Percentage Accumulated'] = top_20_percent['Percentage'].cumsum()
+    
+        st.dataframe(top_20_percent, use_container_width=True)
 
 ### What the average of payment by job and year?
 
