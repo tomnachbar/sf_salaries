@@ -135,8 +135,7 @@ with col1:
     plt.show()
 
     st.pyplot(plt, use_container_width=True)
-
-graph_sum(df1, group_col='Year', value_col='Benefits', palette='viridis', figsize=(10,6), title='Benefits by Year', orient='v', width=0.6)
+    graph_sum(df1, group_col='Year', value_col='Benefits', palette='viridis', figsize=(10,6), title='Benefits by Year', orient='v', width=0.6)
 
 ###. What jobs that have gained more benefits by year?
 
