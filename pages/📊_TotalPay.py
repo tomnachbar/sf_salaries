@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
 import streamlit as st
-import locale
+
 
 
 # Read CSV
@@ -119,7 +119,6 @@ col1, col2 = st.columns(2)
 with col1:
   def avg_totalpay (df1):
 
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     avg_totalpay = df1[['TotalPay', 'Year', 'OvertimePay', 'Benefits']].groupby('Year').mean().reset_index()
     avg_totalpay_long = avg_totalpay.melt(id_vars='Year', var_name='Category', value_name='Average')
 
