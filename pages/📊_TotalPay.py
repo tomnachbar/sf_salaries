@@ -130,7 +130,7 @@ with col1:
     for line in ax.lines:
         x_data, y_data = line.get_data()
         for x, y in zip(x_data, y_data):
-            ax.annotate(locale.currency(y, grouping=True, symbol=True), 
+            ax.annotate("{:.2f}".format(y), 
                         (x, y), 
                         textcoords="offset points",
                         xytext=(0,12), 
