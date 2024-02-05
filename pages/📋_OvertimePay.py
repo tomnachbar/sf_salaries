@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
 import streamlit as st
-import locale
+
 
 
 # Read CSV
@@ -125,10 +125,10 @@ with col1:
     ax = sns.barplot(x=group_col, y=value_col, data=sum_overtime, palette=palette,orient=orient, width=width)
     # Adicionando rótulos de dados nos pontos
     for p in ax.patches:
-          ax.annotate(locale.currency(p.get_height(), grouping=True, symbol=True),
-                      (p.get_x() + p.get_width() / 2., p.get_height()),
-                      ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
-                      textcoords='offset points')
+          ax.annotate("{:.2f}".format(height), 
+                (p.get_x() + p.get_width() / 2., height),
+                ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
+                textcoords='offset points')
 
     plt.title(title)
     plt.tight_layout()
@@ -148,10 +148,10 @@ with col1:
         plt.figure(figsize=(10, 6))
         ax = sns.barplot(x='Year', y='OvertimePay', hue='JobTitle', data=job_overtime, palette='viridis',orient='v', width=0.6, dodge=False)
         for p in ax.patches:
-          ax.annotate(locale.currency(p.get_height(), grouping=True, symbol=True),
-                      (p.get_x() + p.get_width() / 2., p.get_height()),
-                      ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
-                      textcoords='offset points')
+          ax.annotate("{:.2f}".format(height), 
+                (p.get_x() + p.get_width() / 2., height),
+                ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
+                textcoords='offset points')
         plt.title('Top OvertimePay by Job and Year')
         plt.tight_layout()
         plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.08), fancybox=True, shadow=True, ncol=5)
