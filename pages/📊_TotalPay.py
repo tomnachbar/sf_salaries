@@ -117,50 +117,50 @@ col1, col2 = st.columns(2)
 ### What the average of total pay, overtime pay and benefits by year?
 
 with col1:
-  def avg_totalpay(df1):
-    avg_totalpay = df1[['TotalPay', 'Year', 'OvertimePay', 'Benefits']].groupby('Year').mean().reset_index()
-    avg_totalpay_long = avg_totalpay.melt(id_vars='Year', var_name='Category', value_name='Average')
+    def avg_totalpay(df1):
+        avg_totalpay = df1[['TotalPay', 'Year', 'OvertimePay', 'Benefits']].groupby('Year').mean().reset_index()
+        avg_totalpay_long = avg_totalpay.melt(id_vars='Year', var_name='Category', value_name='Average')
 
-    plt.figure(figsize=(10, 6))
-    ax = sns.lineplot(x='Year', y='Average', hue='Category', data=avg_totalpay_long, palette='viridis', marker='o', sort=False)
-    ax.grid(False)
-    plt.rcParams['font.family'] = 'Calibri'
-    ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
-    for line in ax.lines:
-        x_data, y_data = line.get_data()
-        for x, y in zip(x_data, y_data):
-            ax.annotate("{:.2f}".format(y), 
-                        (x, y), 
-                        textcoords="offset points",
-                        xytext=(0,12), 
-                        ha='center')
+        plt.figure(figsize=(10, 6))
+        ax = sns.lineplot(x='Year', y='Average', hue='Category', data=avg_totalpay_long, palette='viridis', marker='o', sort=False)
+        ax.grid(False)
+        plt.rcParams['font.family'] = 'Calibri'
+        ax.xaxis.set_major_locator(plt.MaxNLocator(integer=True))
+        for line in ax.lines:
+            x_data, y_data = line.get_data()
+            for x, y in zip(x_data, y_data):
+                ax.annotate("{:.2f}".format(y), 
+                            (x, y), 
+                            textcoords="offset points",
+                            xytext=(0,12), 
+                            ha='center')
 
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), shadow=True, ncol=1, fontsize='medium')
+        plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), shadow=True, ncol=1, fontsize='medium')
 
-    plt.title('Average of TotalPay, OvertimePay and Benefits by Year')
-    plt.xlabel('Year')
-    plt.ylabel('Average')
+        plt.title('Average of TotalPay, OvertimePay and Benefits by Year')
+        plt.xlabel('Year')
+        plt.ylabel('Average')
 
-    st.pyplot(plt, use_container_width=True)
-avg_totalpay(df1)
+        st.pyplot(plt, use_container_width=True)
+
+    avg_totalpay(df1)
   
 ### What relative and accumulated percentage of the 20 biggest jobs represent of the total value?
 
-     with col2:
-
-        st.markdown('**Top 20 Percentage Relative and Accumulated of Total Value**')
+with col2:
+    st.markdown('**Top 20 Percentage Relative and Accumulated of Total Value**')
     
-        percent = df1[['JobTitle', 'TotalPay', 'Year']].groupby('JobTitle')['TotalPay'].sum().reset_index()
-        percent['Percentage'] = percent['TotalPay'] / percent['TotalPay'].sum() * 100
+    percent = df1[['JobTitle', 'TotalPay', 'Year']].groupby('JobTitle')['TotalPay'].sum().reset_index()
+    percent['Percentage'] = percent['TotalPay'] / percent['TotalPay'].sum() * 100
     
-        top_20_percent = percent.nlargest(20, 'Percentage').reset_index()
+    top_20_percent = percent.nlargest(20, 'Percentage').reset_index()
     
-        top_20_percent['Percentage Accumulated'] = top_20_percent['Percentage'].cumsum()
+    top_20_percent['Percentage Accumulated'] = top_20_percent['Percentage'].cumsum()
     
-        st.dataframe(top_20_percent, use_container_width=True)
+    st.dataframe(top_20_percent, use_container_width=True)
 
 ### What the average of payment by job and year?
 
-avg_job_year= df1[['JobTitle','BasePay','Year']].groupby(['JobTitle','Year']).mean().sort_values('Year', ascending=False).reset_index()
+avg_job_year = df1[['JobTitle','BasePay','Year']].groupby(['JobTitle','Year']).mean().sort_values('Year', ascending=False).reset_index()
 
 avg_job_year.head(20)
