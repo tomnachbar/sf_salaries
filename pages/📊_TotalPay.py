@@ -146,7 +146,7 @@ avg_totalpay(df1)
   
 ### What relative and accumulated percentage of the 20 biggest jobs represent of the total value?
 
-  with col2:
+ with col2:
 
     st.markdown('**Top 20 Percentage Relative and Accumulated of Total Value**')
 
