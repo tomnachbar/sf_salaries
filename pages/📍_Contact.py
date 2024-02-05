@@ -65,7 +65,7 @@ df1['OtherPay'] = df1['OtherPay'].astype(float)
 
 df1['Benefits'] = df1['Benefits'].astype(float)
 
-st.header('📍You can find me here:', divider='blue')
+st.header('📍You can find me here:')
 
 st.markdown("""   """)
 
