@@ -140,7 +140,7 @@ graph_sum(df1, group_col='Year', value_col='Benefits', palette='viridis', figsiz
 
 ###. What jobs that have gained more benefits by year?
 
-    with col2:
+with col2:
     
     benefit_year = df1.loc[df1.groupby(['Year'])['Benefits'].idxmax()][['Year', 'JobTitle', 'Benefits']]
     plt.figure(figsize=(10, 6))
