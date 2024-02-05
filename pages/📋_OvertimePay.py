@@ -81,7 +81,12 @@ with st.sidebar:
 
 # ==================================================================== #
 st.sidebar.markdown('**YEAR FILTER:**')   
-year = st.sidebar.slider('Choose the Year:', df1['Year'].min(), df1['Year'].max(), (df1['Year'].min(), df1['Year'].max()))
+#year = st.sidebar.slider('Choose the Year:', df1['Year'].min(), df1['Year'].max(), (df1['Year'].min(), df1['Year'].max()))
+year = st.sidebar.slider('Choose the year:', min_value=2011,
+                max_value=2014,
+                value=int(df1['Year'][0]),
+                step=1)
+
 
 # FILTER of JOB
 # ==================================================================== #
@@ -99,7 +104,8 @@ job = st.sidebar.multiselect(label='Choose the Job Title:',
 
 # DATAFRAME FILTERED
 # ==================================================================== #
-df1_filtered = df1[(df1['Year'] >= year[0]) & (df1['Year'] <= year[1])]
+#df1_filtered = df1[(df1['Year'] >= year[0]) & (df1['Year'] <= year[1])]
+df1_filtered = df1[(df1['Year'] >= year) & (df1['Year'] <= year)]
 
 df1 = df1_filtered[df1_filtered['JobTitle'].isin(job)]
 
