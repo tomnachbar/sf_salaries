@@ -140,21 +140,21 @@ graph_sum(df1, group_col='Year', value_col='Benefits', palette='viridis', figsiz
 
 ###. What jobs that have gained more benefits by year?
 
-with col2:
-
-   benefit_year = df1.loc[df1.groupby(['Year'])['Benefits'].idxmax()][['Year', 'JobTitle', 'Benefits']]
-plt.figure(figsize=(10, 6))
-ax = sns.barplot(x='Year', y='Benefits', hue='JobTitle', data=benefit_year, palette='viridis', width=0.6, dodge=False)
-plt.title('Jobs have Gained most Benefits by Year')
-plt.tight_layout()
-plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.08), fancybox=True, shadow=True, ncol=5)
-
-for p in ax.patches:
-    height = p.get_height()
-    ax.annotate("{:.2f}".format(height), 
-                (p.get_x() + p.get_width() / 2., height),
-                ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
-                textcoords='offset points')
-
-st.pyplot(plt, use_container_width=True)
+    with col2:
+    
+       benefit_year = df1.loc[df1.groupby(['Year'])['Benefits'].idxmax()][['Year', 'JobTitle', 'Benefits']]
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(x='Year', y='Benefits', hue='JobTitle', data=benefit_year, palette='viridis', width=0.6, dodge=False)
+    plt.title('Jobs have Gained most Benefits by Year')
+    plt.tight_layout()
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.08), fancybox=True, shadow=True, ncol=5)
+    
+    for p in ax.patches:
+        height = p.get_height()
+        ax.annotate("{:.2f}".format(height), 
+                    (p.get_x() + p.get_width() / 2., height),
+                    ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
+                    textcoords='offset points')
+    
+    st.pyplot(plt, use_container_width=True)
     
