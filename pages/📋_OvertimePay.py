@@ -116,47 +116,48 @@ st.container()
 col1, col2 = st.columns(2)
 
 with col1:
-    ###3. How is the total of overtime pay by year?
+    ###. How is the total of overtime pay by year?
 
-   def graph_sum ( df1, group_col='Year', value_col='OvertimePay', palette='mako', figsize=(10,6), width=0.4, title='OvertimePay By Year',orient='v'):
+    def graph_sum(df1, group_col='Year', value_col='OvertimePay', palette='mako', figsize=(10,6), width=0.4, title='OvertimePay By Year',orient='v'):
 
-    sum_overtime = df1[[group_col,value_col]].groupby(group_col).sum().reset_index()
-    plt.figure(figsize=figsize)
-    ax = sns.barplot(x=group_col, y=value_col, data=sum_overtime, palette=palette,orient=orient, width=width)
-    # Adicionando rótulos de dados nos pontos
-    for p in ax.patches:
-          ax.annotate("{:.2f}".format(height), 
-                (p.get_x() + p.get_width() / 2., height),
-                ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
-                textcoords='offset points')
-
-    plt.title(title)
-    plt.tight_layout()
-    plt.show()
-
-    st.pyplot(plt, use_container_width=True)
-
-   graph_sum ( df1, group_col='Year', value_col='OvertimePay', palette='mako', figsize=(10,6), title='OvertimePay By Year',orient='v',width=0.6)
-
- ####. Which job that have gained most overtime pay by year?
- 
-   with col2:
-   
-        job_overtime = df1.loc[df1.groupby('Year')['OvertimePay'].idxmax(), ['Year', 'JobTitle', 'OvertimePay']]
-
-
-        plt.figure(figsize=(10, 6))
-        ax = sns.barplot(x='Year', y='OvertimePay', hue='JobTitle', data=job_overtime, palette='viridis',orient='v', width=0.6, dodge=False)
+        sum_overtime = df1[[group_col, value_col]].groupby(group_col).sum().reset_index()
+        plt.figure(figsize=figsize)
+        ax = sns.barplot(x=group_col, y=value_col, data=sum_overtime, palette=palette, orient=orient, width=width)
+        
+        # Adicionando rótulos de dados nos pontos
         for p in ax.patches:
-          ax.annotate("{:.2f}".format(height), 
-                (p.get_x() + p.get_width() / 2., height),
-                ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
-                textcoords='offset points')
-        plt.title('Top OvertimePay by Job and Year')
-        plt.tight_layout()
-        plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.08), fancybox=True, shadow=True, ncol=5)
+            height = p.get_height()
+            ax.annotate("{:.2f}".format(height), 
+                        (p.get_x() + p.get_width() / 2., height),
+                        ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
+                        textcoords='offset points')
 
+        plt.title(title)
+        plt.tight_layout()
+        plt.show()
 
         st.pyplot(plt, use_container_width=True)
-      
+
+    graph_sum(df1, group_col='Year', value_col='OvertimePay', palette='mako', figsize=(10,6), title='OvertimePay By Year', orient='v', width=0.6)
+
+####. Which job that have gained most overtime pay by year?
+
+with col2:
+    job_overtime = df1.loc[df1.groupby('Year')['OvertimePay'].idxmax(), ['Year', 'JobTitle', 'OvertimePay']]
+
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(x='Year', y='OvertimePay', hue='JobTitle', data=job_overtime, palette='viridis', orient='v', width=0.6, dodge=False)
+
+    for p in ax.patches:
+        height = p.get_height()
+        ax.annotate("{:.2f}".format(height), 
+                    (p.get_x() + p.get_width() / 2., height),
+                    ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
+                    textcoords='offset points')
+                    
+    plt.title('Top OvertimePay by Job and Year')
+    plt.tight_layout()
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.08), fancybox=True, shadow=True, ncol=5)
+
+    st.pyplot(plt, use_container_width=True)
     
