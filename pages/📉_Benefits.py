@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
 import streamlit as st
-import locale
+
 
 # Read CSV
 df = pd.read_csv('Salaries.csv',low_memory=False)
@@ -125,7 +125,8 @@ with col1:
     ax = sns.barplot(x=group_col, y=value_col, data=sum_overtime, palette=palette,orient=orient, width=width)
 
     for p in ax.patches:
-          ax.annotate(locale.currency(p.get_height(), grouping=True, symbol=True),
+          ax.annotate("{:.2f}".format(y), 
+                        (x, y),
                       (p.get_x() + p.get_width() / 2., p.get_height()),
                       ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
                       textcoords='offset points')
@@ -151,7 +152,8 @@ with col2:
 
 
     for p in ax.patches:
-          ax.annotate(locale.currency(p.get_height(), grouping=True, symbol=True),
+          ax.annotate("{:.2f}".format(y), 
+                        (x, y),
                       (p.get_x() + p.get_width() / 2., p.get_height()),
                       ha='center', va='center', fontsize=12, color='black', xytext=(0, 8),
                       textcoords='offset points')
